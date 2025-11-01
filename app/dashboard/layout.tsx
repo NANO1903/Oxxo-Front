@@ -1,9 +1,12 @@
 import Header from "./_components/Header";
 import Sidebar from "./_components/_sidebar/Sidebar";
 
-export default function LayoutDashboard({ children,
+export default function LayoutDashboard({ 
+    children,
+    count
 }: Readonly<{
     children: React.ReactNode;
+    count: React.ReactNode;
 }>) {
     return (
         <div className="bg-orange-50">
@@ -11,6 +14,7 @@ export default function LayoutDashboard({ children,
             <div className="flex flex-row items-center">
                 <Sidebar />
                 {children}
+                {count}
             </div>
         </div>
     );
