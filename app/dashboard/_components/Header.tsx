@@ -9,5 +9,3 @@ export default function Header() {
         </div>
     );
 };
-
-/*Fetching on SSC*/

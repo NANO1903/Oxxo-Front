@@ -1,22 +1,32 @@
 "use client";
 import { API_URL } from "@/constants";
-import { Button, Input } from "@heroui/react";
+import { Button, Input, Spinner } from "@heroui/react";
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function LoginPage() {
-    const handleSubmit = async (e : React.FormEvent) => {
+    const [submitting, setSubmitting] = useState(false);
+    const router = useRouter();
+    const handleSubmit = async (e: React.FormEvent) => {
+        setSubmitting(true);
         e.preventDefault();
-        const formData = new FormData(e.target);
+        const formData = new FormData(e.target as HTMLFormElement);
         let authData: any = {};
         authData.userEmail = formData.get("userEmail");
         authData.userPassword = formData.get("userPassword");
-        const { data } = await axios.post(`${API_URL}/auth/login`, {
-            ...authData
-        }, {
-            withCredentials: true
-        });
-        console.log(data);
+        try {
+            const response = await axios.post(`${API_URL}/auth/login`, {
+                ...authData
+            }, {
+                withCredentials: true
+            });
+            if (response.status === 201) router.push('/dashboard');
+        } catch (e) {
+            console.error(e);
+        }
+        setSubmitting(false);
         return;
     }
 
@@ -28,8 +38,8 @@ export default function LoginPage() {
                 <Input label="Contraseña" name="userPassword" type="password" isRequired={true} size="sm" />
             </div>
             <div className="flex flex-col items-center gap-2">
-                <Button type="submit" className="self-center bg-orange-50 text-blue-400 font-extrabold">
-                    Iniciar Sesión
+                <Button type="submit" disabled={submitting} className="self-center bg-orange-50 text-blue-400 font-extrabold">
+                    {submitting ? <Spinner size="md" /> : "Iniciar Sesión"}
                 </Button>
                 <p className="text-white">¿No tienes una cuenta? <Link href="/signup" className="text-blue-700 underline">Regístrate</Link></p>
             </div>
