@@ -3,7 +3,7 @@ import NavItem from "./NavItem";
 
 export default function Sidebar() {
     return (
-        <nav className="bg-orange-200 w-[10vw] h-[90vh] flex flex-col items-center justify-center gap-15">
+        <nav className="bg-orange-200 w-1/12 h-[90vh] flex flex-col items-center justify-center gap-15">
             <NavItem icon={<LuStore className="text-4xl" />} path="/dashboard" />
             <NavItem icon={<LuTruck className="text-4xl" />} path="/dashboard/providers" />
             <NavItem icon={<LuCookie className="text-4xl" />} path="/dashboard/products" />
