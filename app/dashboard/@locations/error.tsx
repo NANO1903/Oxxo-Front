@@ -1,5 +1,5 @@
 "use client";
 
-export default function  ErrorCount() {
+export default function  ErrorStores() {
     return "Error al cargar tiendas";
 }
