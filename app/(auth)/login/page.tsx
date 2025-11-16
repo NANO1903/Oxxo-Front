@@ -17,15 +17,14 @@ export default function LoginPage() {
         authData.userEmail = formData.get("userEmail");
         authData.userPassword = formData.get("userPassword");
         try {
-            //const response = await axios.post(`${API_URL}/auth/login`, {
             const response = await axios.post(`${API_URL}/auth/login`, {
                 ...authData
             }, {
                 withCredentials: true
             });
+            
             if (response.status === 201) {
-                router.replace(`${URL}/dashboard`);
-                console.log("Status 201");
+                router.replace(`/dashboard`);
             }
         } catch (e) {
             console.error(e);

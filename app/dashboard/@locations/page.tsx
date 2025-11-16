@@ -4,6 +4,7 @@ import { API_URL, TOKEN_NAME } from "@/constants"
 import SelectLocation from "./_components/SelectLocation";
 import { Location } from "@/entitites";
 import LocationCard from "./_components/LocationCard";
+import FormNewLocation from "./_components/FormNewLocation";
 
 const LocationsPage = async ({ searchParams }: { searchParams: Promise<{ store?: string }> }) => {
     const userCookies = cookies();
@@ -23,11 +24,11 @@ const LocationsPage = async ({ searchParams }: { searchParams: Promise<{ store?:
                 managerId: "0",
                 managerFullName: "",
                 managerPhoneNumber: "",
-                managerEmail: "", 
+                managerEmail: "",
                 managerSalary: 0
             }
         },
-        ... data
+        ...data
     ];
     const params = await searchParams;
     return (
@@ -37,8 +38,9 @@ const LocationsPage = async ({ searchParams }: { searchParams: Promise<{ store?:
                     <SelectLocation locations={data} store={params.store} />
                 </div>
                 <div className="w-4/12">
-                    <LocationCard store={(await searchParams).store}/>
+                    <LocationCard store={params.store} />
                 </div>
+                <FormNewLocation />
             </div>
         </div>
     );

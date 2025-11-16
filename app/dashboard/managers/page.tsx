@@ -1,5 +1,5 @@
 const ManagersPage = () => {
-    return null;
+    return <div>Managers</div>;
 };
 
 export default ManagersPage;
