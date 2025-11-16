@@ -4,7 +4,7 @@ import { TOKEN_NAME } from "./constants";
 export function proxy(req: NextRequest) {
     const { pathname } = req.nextUrl;
     const hasToken = req.cookies.has(TOKEN_NAME);
-
+    
     // Deja pasar preflights y otros métodos especiales
     if (req.method === "OPTIONS") return NextResponse.next();
 

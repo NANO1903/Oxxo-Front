@@ -24,10 +24,9 @@ export default function LoginPage() {
             });
             
             if (response.status === 201) {
-                router.replace(`/dashboard`);
+                router.push(`/dashboard`);
             }
         } catch (e) {
-            console.error(e);
         }
         setSubmitting(false);
         return;

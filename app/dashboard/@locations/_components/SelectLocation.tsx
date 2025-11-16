@@ -26,18 +26,15 @@ export default function SelectLocation({ locations, store }: Props) {
                 if (!key || key === "0") {
                     router.replace("/dashboard");
                 } else {
-                    //router.replace(`/dashboard?store=${encodeURIComponent(key)}`);
-                    router.replace(`/dashboard`);
+                    router.replace(`/dashboard?store=${encodeURIComponent(key)}`);
                 }
             }}
         >
             {locations.map((loc) => (
-                <SelectItem key={String(loc.locationId)} value={loc.locationId}>
+                <SelectItem key={String(loc.locationId)}>
                     {loc.locationName}
                 </SelectItem>
             ))}
         </Select>
     );
 }
-
-//Location Card 
