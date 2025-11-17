@@ -5,6 +5,8 @@ import FormNewLocation from "./_components/FormNewLocation";
 import DeleteLocationButton from "./_components/DeleteLocationButton";
 import { authHeaders } from "@/helpers/authHeaders";
 import { Location } from "@/entitites";
+import UdpdateLocation from "./_components/UpdateLocation";
+import FormUpdateLocation from "./_components/FormUpdateLocation";
 
 const LocationsPage = async ({ searchParams }: { searchParams: Promise<{ store?: string }> }) => {
     const response = await fetch(`${API_URL}/locations`, {
@@ -47,6 +49,11 @@ const LocationsPage = async ({ searchParams }: { searchParams: Promise<{ store?:
                 </div>
                 <div className="my-5">
                     <DeleteLocationButton searchParams={searchParams} />
+                </div>
+                <div>
+                    <UdpdateLocation>
+                        <FormUpdateLocation searchParams={searchParams} />
+                    </UdpdateLocation>
                 </div>
             </div>
         </div>
