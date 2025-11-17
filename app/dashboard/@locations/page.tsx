@@ -2,11 +2,8 @@ import { API_URL } from "@/constants"
 import SelectLocation from "./_components/SelectLocation";
 import LocationCard from "./_components/LocationCard";
 import FormNewLocation from "./_components/FormNewLocation";
-import DeleteLocationButton from "./_components/DeleteLocationButton";
 import { authHeaders } from "@/helpers/authHeaders";
 import { Location } from "@/entitites";
-import UdpdateLocation from "./_components/UpdateLocation";
-import FormUpdateLocation from "./_components/FormUpdateLocation";
 
 const LocationsPage = async ({ searchParams }: { searchParams: Promise<{ store?: string }> }) => {
     const response = await fetch(`${API_URL}/locations`, {
@@ -36,7 +33,7 @@ const LocationsPage = async ({ searchParams }: { searchParams: Promise<{ store?:
     ];
     const params = await searchParams;
     return (
-        <div className="w-8/12">
+        <div className="w-7/12">
             <div className="w-full flex flex-col items-center h-[90vh] bg-red-100">
                 <div className="w-1/2 my-10">
                     <SelectLocation locations={data} store={params.store} />
