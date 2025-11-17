@@ -2,6 +2,8 @@
 
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHeaders";
+import { revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
 
 export default async function deleteLocation(formData: FormData) {
     const header = await authHeaders();
@@ -13,4 +15,6 @@ export default async function deleteLocation(formData: FormData) {
             ...header
         }
     });
+    revalidateTag("dashboard:locations", "max");
+    redirect(`/dashboard`);
 }
