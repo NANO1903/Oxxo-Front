@@ -1,16 +1,19 @@
-import { API_URL, TOKEN_NAME } from "@/constants";
+import { API_URL } from "@/constants";
 import { Employee } from "@/entitites";
 import { authHeaders } from "@/helpers/authHeaders";
 import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
-import axios from "axios";
 
 export default async function EmployeesLocation({ store }: { store: string | string[] | undefined }) {
     const header = await authHeaders();
-    const { data } = await axios.get<Employee[]>(`${API_URL}/employees/location/${store}`, {
+    const response = await fetch(`${API_URL}/employees/location/${store}`, {
         headers: {
             ...header
+        },
+        next:{
+            tags:["dashbaord:locations:employees"]
         }
     });
+    const data: Employee[] = await response.json();
     if (!data) return null;
 
     return data.map((employee: Employee) => {
@@ -20,7 +23,7 @@ export default async function EmployeesLocation({ store }: { store: string | str
                 <CardHeader>
                     <p className="w-full">Nombre: <b>{fullName}</b></p>
                 </CardHeader>
-                <Divider/>
+                <Divider />
                 <CardBody>
                     <p className="w-full">Email: <b>{employee.employeeEmail}</b></p>
                     <p className="w-full">Teléfono: <b>{employee.employeePhoneNumber}</b></p>

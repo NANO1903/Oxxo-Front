@@ -1,8 +1,8 @@
 "use server";
 
-import { API_URL, TOKEN_NAME } from "@/constants";
+import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHeaders";
-import axios from "axios";
+import { revalidateTag } from "next/cache";
 
 export async function createLocation(formData: FormData) {
     const header = await authHeaders();
@@ -22,11 +22,13 @@ export async function createLocation(formData: FormData) {
         }
     }
     location.locationLatLng = locationLatLng;
-    await axios.post(`${API_URL}/locations`, {
-        ...location
-    }, {
+    const response = await fetch(`${API_URL}/locations`, {
+        method: "POST",
+        body: JSON.stringify(location),
         headers: {
             ...header
         }
     });
+
+    if (response.status == 201) revalidateTag("dashboard:locations", "max");
 }
