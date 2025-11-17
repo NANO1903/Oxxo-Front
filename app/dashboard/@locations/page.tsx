@@ -17,7 +17,7 @@ const LocationsPage = async ({ searchParams }: { searchParams: Promise<{ store?:
             tags: ["dashboard:locations"]
         }
     });
-    let data: Location[] = await response.json(); 
+    let data: Location[] = await response.json();
     data = [
         {
             locationId: 0,
@@ -41,19 +41,11 @@ const LocationsPage = async ({ searchParams }: { searchParams: Promise<{ store?:
                 <div className="w-1/2 my-10">
                     <SelectLocation locations={data} store={params.store} />
                 </div>
-                <div className="w-4/12">
+                <div className="w-8/12">
                     <LocationCard store={params.store} />
                 </div>
                 <div className="w-6/12">
                     <FormNewLocation searchParams={searchParams} />
-                </div>
-                <div className="my-5">
-                    <DeleteLocationButton searchParams={searchParams} />
-                </div>
-                <div>
-                    <UdpdateLocation>
-                        <FormUpdateLocation searchParams={searchParams} />
-                    </UdpdateLocation>
                 </div>
             </div>
         </div>

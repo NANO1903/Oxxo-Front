@@ -1,8 +1,11 @@
 import { API_URL } from "@/constants";
-import { Location, Manager } from "@/entitites";
+import { Location } from "@/entitites";
 import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
 import Link from "next/link";
 import { authHeaders } from "@/helpers/authHeaders";
+import DeleteLocationButton from "./DeleteLocationButton";
+import UdpdateLocation from "./UpdateLocation";
+import FormUpdateLocation from "./FormUpdateLocation";
 
 export default async function LocationCard({ store }: { store: string | string[] | undefined }) {
     if (!store) return null;
@@ -26,6 +29,14 @@ export default async function LocationCard({ store }: { store: string | string[]
             <CardBody>
                 <p className="w-full"> Manager: <Link href={`/dashboard/managers`}><b>{data.manager?.managerFullName}</b></Link> </p>
                 <p className="w-full"> Dirección: <b>{data.locationAddress}</b> </p>
+                <div className="flex flex-col items-center">
+                    <div className="mt-5 flex flex-row grow-0 gap-10 items-center">
+                        <DeleteLocationButton store={store} />
+                        <UdpdateLocation>
+                            <FormUpdateLocation store={store} />
+                        </UdpdateLocation>
+                    </div>
+                </div>
             </CardBody>
         </Card>
     );
