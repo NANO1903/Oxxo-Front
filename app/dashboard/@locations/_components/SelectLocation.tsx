@@ -1,5 +1,4 @@
 "use client";
-import { URL } from "@/constants";
 import { Location } from "@/entitites";
 import { Select, SelectItem } from "@heroui/react";
 import { useRouter } from "next/navigation";

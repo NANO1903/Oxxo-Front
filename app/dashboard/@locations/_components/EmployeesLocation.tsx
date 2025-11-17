@@ -9,13 +9,18 @@ export default async function EmployeesLocation({ store }: { store: string | str
         headers: {
             ...header
         },
-        next:{
-            tags:["dashbaord:locations:employees"]
+        next: {
+            tags: ["dashbaord:locations:employees"]
         }
     });
     const data: Employee[] = await response.json();
     if (!data) return null;
 
+    if (data.length == 0) return (
+        <div>
+            <p className="w-full text-2xl px-2 text-center mt-10">No hay empleados en esta tienda</p>
+        </div>
+    );
     return data.map((employee: Employee) => {
         const fullName = employee.employeeName + " " + employee.employeeLastName;
         return (
