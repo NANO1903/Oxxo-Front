@@ -1,14 +1,14 @@
 import { API_URL, TOKEN_NAME } from "@/constants";
 import { Employee } from "@/entitites";
+import { authHeaders } from "@/helpers/authHeaders";
 import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
 import axios from "axios";
-import { cookies } from "next/headers";
 
 export default async function EmployeesLocation({ store }: { store: string | string[] | undefined }) {
-    const token = (await cookies()).get(TOKEN_NAME)?.value;
+    const header = await authHeaders();
     const { data } = await axios.get<Employee[]>(`${API_URL}/employees/location/${store}`, {
         headers: {
-            Authorization: `Bearer ${token}`
+            ...header
         }
     });
     if (!data) return null;
