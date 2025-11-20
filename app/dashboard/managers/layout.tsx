@@ -10,7 +10,7 @@ export default function ManagersLayout({
             <div className="w-4/12 max-h-[90vh] h-[90vh] overflow-hidden overflow-y-auto">
                 <ManagerCards />
             </div>
-            <div>
+            <div className="w-7/12">
                 {children}
             </div>
         </>

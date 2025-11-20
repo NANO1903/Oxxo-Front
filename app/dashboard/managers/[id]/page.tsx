@@ -2,6 +2,7 @@ import { API_URL } from "@/constants";
 import { Manager } from "@/entitites";
 import { authHeaders } from "@/helpers/authHeaders";
 import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
+import ManagerCard from "./_components/ManagerCard";
 
 export default async function ManagerPage({
     params,
@@ -27,16 +28,8 @@ export default async function ManagerPage({
     if (!manager) return null;
 
     return (
-        <Card key={manager.managerId} className="mx-20 py-2 bg-orange-50">
-            <CardHeader>
-                <p className="w-full"> Nombre: <b>{manager.managerFullName}</b></p>
-            </CardHeader>
-            <Divider />
-            <CardBody>
-                <p className="w-full">Email: <b>{manager.managerEmail}</b></p>
-                <p className="w-full">Teléfono: <b>{manager.managerPhoneNumber}</b></p>
-                <p className="w-full">Tienda: <b>{manager.location ? manager.location.locationName : "El manager no está asignado"}</b></p>
-            </CardBody>
-        </Card>
+        <div>
+            <ManagerCard manager={manager} />
+        </div>
     );
 }

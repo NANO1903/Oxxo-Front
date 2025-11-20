@@ -38,7 +38,7 @@ const LocationsPage = async ({ searchParams }: { searchParams: Promise<{ store?:
                 <div className="w-1/2 my-10">
                     <SelectLocation locations={data} store={params.store} />
                 </div>
-                <div className="w-8/12">
+                <div>
                     <LocationCard store={params.store} />
                 </div>
                 <div className="w-6/12">

@@ -1,6 +1,6 @@
 import { API_URL } from "@/constants";
 import { Location } from "@/entitites";
-import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
+import { Card, CardBody, CardFooter, CardHeader, Divider } from "@heroui/react";
 import Link from "next/link";
 import { authHeaders } from "@/helpers/authHeaders";
 import DeleteLocationButton from "./DeleteLocationButton";
@@ -21,23 +21,35 @@ export default async function LocationCard({ store }: { store: string | string[]
     const data: Location = await response.json();
 
     return (
-        <Card>
+        <Card className="mx-20 py-2 text-center">
             <CardHeader>
-                <p className="w-full text-2xl"> <b>{data.locationName}</b> </p>
+                <p className="w-full text-3xl"> <b>{data.locationName}</b> </p>
             </CardHeader>
             <Divider />
-            <CardBody>
-                <p className="w-full"> Manager:{" "} <Link href={`/dashboard/managers/${data.manager?.managerId}`}><b>{data.manager?.managerFullName}</b></Link> </p>
-                <p className="w-full"> Dirección: <b>{data.locationAddress}</b> </p>
-                <div className="flex flex-col items-center">
-                    <div className="mt-5 flex flex-row grow-0 gap-10 items-center">
-                        <DeleteLocationButton store={store} />
-                        <UdpdateLocation>
-                            <FormUpdateLocation store={store} />
-                        </UdpdateLocation>
-                    </div>
+            <CardBody className="flex flex-row grow-0 gap-10 justify-center items-center text-lg">
+                <div>
+                    <p className="w-full"> Manager: <Link href={`/dashboard/managers/${data.manager?.managerId}`}><b className="underline">{data.manager?.managerFullName}</b></Link> </p>
+                    <p className="w-full"> Dirección: <b>{data.locationAddress}</b> </p>
+                </div>
+                <div>
+                    <>
+                        <iframe
+                            width="300"
+                            height="200"
+                            className="border-3 border-orange-500 rounded-md"
+                            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyD4yCeK6Mct7kTAL2WPRy3h6WTI3nob5u4&q=${data.locationLatLng[0]},${data.locationLatLng[1]}`}>
+                        </iframe>
+                    </>
                 </div>
             </CardBody>
+            <CardFooter className="flex flex-col items-center">
+                <div className="mt-5 flex flex-row grow-0 gap-10 items-center">
+                    <DeleteLocationButton store={store} />
+                    <UdpdateLocation>
+                        <FormUpdateLocation store={store} />
+                    </UdpdateLocation>
+                </div>
+            </CardFooter>
         </Card>
     );
 }
