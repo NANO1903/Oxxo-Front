@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function ManagerCard({ manager }: { manager: Manager }) {
     return (
-        <Card className="mx-20 py-2 text-center">
+        <Card className="mx-20 py-2 text-center bg-amber-50 border-2 border-orange-300">
             <CardHeader>
                 <p className="w-full text-3xl"><b>{manager.managerFullName}</b></p>
             </CardHeader>
@@ -21,7 +21,7 @@ export default function ManagerCard({ manager }: { manager: Manager }) {
                             <iframe
                                 width="300"
                                 height="200"
-                                className="border-3 border-orange-500 rounded-md"
+                                className="border-3 border-red-600 rounded-xl"
                                 src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyD4yCeK6Mct7kTAL2WPRy3h6WTI3nob5u4&q=${manager.location.locationLatLng[0]},${manager.location.locationLatLng[1]}`}>
                             </iframe>
                         </>

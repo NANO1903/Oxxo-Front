@@ -38,7 +38,7 @@ export default async function FormNewLocation({ searchParams }: { searchParams: 
             <Input required={true} label="Latitud" placeholder="-25.8252" name="locationLat" />
             <Input required={true} label="Longitud" placeholder="45.9874" name="locationLng" />
             <SelectManager managers={dataManagers} locations={dataLocations} />
-            <Button type="submit" color="primary">Subir</Button>
+            <Button type="submit" color="primary" className="text-lg font-bold">Subir</Button>
         </form>
     );
 }

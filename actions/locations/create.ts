@@ -1,7 +1,6 @@
 "use server";
 
 import { API_URL } from "@/constants";
-import { Location } from "@/entitites";
 import { authHeaders } from "@/helpers/authHeaders";
 import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";

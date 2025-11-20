@@ -9,7 +9,12 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
                 <div className="h-[90vh] overflow-hidden overflow-y-auto">
                     {
                         params.store ? (
-                            <EmployeesLocation store={params?.store} />
+                            <>
+                                <div>
+                                    <p className="w-full text-4xl px-2 text-center my-5 font-bold">Empleados</p>
+                                </div>
+                                <EmployeesLocation store={params?.store} />
+                            </>
                         ) : <p className="w-full text-2xl px-2 text-center mt-10">Selecciona una tienda para ver a los empleados</p>
                     }
                 </div>
