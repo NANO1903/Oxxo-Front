@@ -6,6 +6,7 @@ import { authHeaders } from "@/helpers/authHeaders";
 import DeleteLocationButton from "./DeleteLocationButton";
 import UdpdateLocation from "./UpdateLocation";
 import FormUpdateLocation from "./FormUpdateLocation";
+import { GoogleMapsAPI } from "@/api_keys";
 
 export default async function LocationCard({ store }: { store: string | string[] | undefined }) {
     if (!store) return null;
@@ -37,7 +38,7 @@ export default async function LocationCard({ store }: { store: string | string[]
                             width="300"
                             height="200"
                             className="border-3 border-red-600 rounded-xl"
-                            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyD4yCeK6Mct7kTAL2WPRy3h6WTI3nob5u4&q=${data.locationLatLng[0]},${data.locationLatLng[1]}`}>
+                            src={`https://www.google.com/maps/embed/v1/place?key=${GoogleMapsAPI}&q=${data.locationLatLng[0]},${data.locationLatLng[1]}`}>
                         </iframe>
                     </>
                 </div>

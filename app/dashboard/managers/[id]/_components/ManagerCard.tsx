@@ -1,3 +1,4 @@
+import { GoogleMapsAPI } from "@/api_keys";
 import { Manager } from "@/entitites";
 import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
 import Link from "next/link";
@@ -22,7 +23,7 @@ export default function ManagerCard({ manager }: { manager: Manager }) {
                                 width="300"
                                 height="200"
                                 className="border-3 border-red-600 rounded-xl"
-                                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyD4yCeK6Mct7kTAL2WPRy3h6WTI3nob5u4&q=${manager.location.locationLatLng[0]},${manager.location.locationLatLng[1]}`}>
+                                src={`https://www.google.com/maps/embed/v1/place?key=${GoogleMapsAPI}&q=${manager.location.locationLatLng[0]},${manager.location.locationLatLng[1]}`}>
                             </iframe>
                         </>
                     ) : (<p>No tiene tienda asignada</p>)}
