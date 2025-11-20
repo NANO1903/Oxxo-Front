@@ -1,5 +1,3 @@
-const ManagersPage = () => {
-    return <div>Managers</div>;
-};
-
-export default ManagersPage;
+export default async function ManagersPage() {
+    return null;
+}
