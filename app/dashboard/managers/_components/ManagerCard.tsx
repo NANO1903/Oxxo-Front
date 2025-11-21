@@ -23,7 +23,7 @@ export default async function ManagerCards() {
     );
     return data.map((manager: Manager) => {
         return (
-            <Card key={manager.managerId} className="mx-10 first:mt-2 last:mb-2 my-10 border-2 border-amber-100 text-zinc-600 hover:scale-110 hover:text-black hover:bg-amber-50 hover:border-orange-300" as={Link}
+            <Card key={manager.managerId} className="mx-10 last:mb-5 mb-10 border-2 border-amber-100 text-zinc-600 hover:scale-110 hover:text-black hover:bg-amber-50 hover:border-orange-300" as={Link}
                 href={`/dashboard/managers/${manager.managerId}`}>
                     <CardHeader>
                         <p className="w-full"> Nombre: <b>{manager.managerFullName}</b></p>

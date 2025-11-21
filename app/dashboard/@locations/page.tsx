@@ -6,9 +6,11 @@ import { authHeaders } from "@/helpers/authHeaders";
 import { Location } from "@/entitites";
 
 const LocationsPage = async ({ searchParams }: { searchParams: Promise<{ store?: string }> }) => {
+    const header = await authHeaders();
+    if (!header) return;
     const response = await fetch(`${API_URL}/locations`, {
         headers: {
-            ...authHeaders
+            ...header
         },
         next: {
             tags: ["dashboard:locations"]
