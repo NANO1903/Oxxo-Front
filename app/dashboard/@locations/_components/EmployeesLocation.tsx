@@ -10,7 +10,7 @@ export default async function EmployeesLocation({ store }: { store: string | str
             ...header
         },
         next: {
-            tags: ["dashbaord:locations:employees"]
+            tags: ["dashboard:locations:employees"]
         }
     });
     const data: Employee[] = await response.json();
