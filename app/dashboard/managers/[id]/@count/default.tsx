@@ -15,8 +15,6 @@ const CountManagers = async () => {
     });
 
     const managers: Manager[] = await response.json();
-    console.log("objeto: " + managers);
-
     const countNoStore = managers.filter((manager: Manager) => !manager.location).length;
     let max: number = 0;
     let salary: number = 0;

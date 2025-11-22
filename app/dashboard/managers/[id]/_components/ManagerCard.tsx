@@ -1,7 +1,8 @@
 import { GoogleMapsAPI } from "@/api_keys";
 import { Manager } from "@/entitites";
-import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
+import { Card, CardBody, CardFooter, CardHeader, Divider } from "@heroui/react";
 import Link from "next/link";
+import DeleteManagerButton from "./DeleteManagerButton";
 
 export default function ManagerCard({ manager }: { manager: Manager }) {
     return (
@@ -29,6 +30,11 @@ export default function ManagerCard({ manager }: { manager: Manager }) {
                     ) : (<p>No tiene tienda asignada</p>)}
                 </div>
             </CardBody>
+            <CardFooter className="flex flex-col items-center">
+                <div className="mt-5 flex flex-row grow-0 gap-10 items-center">
+                    <DeleteManagerButton managerId={manager.managerId} />
+                </div>
+            </CardFooter>
         </Card>
     );
 }
