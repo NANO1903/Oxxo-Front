@@ -2,7 +2,6 @@ import { Provider } from "@/entitites";
 import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
 
 export default async function ProviderCard({ provider }: { provider: Provider }) {
-    const productsQuantity = provider.products ? provider.products.length : 0;
 
     return (
         <Card>
