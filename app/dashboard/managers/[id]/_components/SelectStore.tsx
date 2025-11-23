@@ -13,7 +13,7 @@ export default function SelectStore({ stores, defaultStore }: { stores: Location
     const defaultKeys = defaultStore !== undefined ? [String(defaultStore)] : [];
 
     return (
-        <Select label="Tienda" name="store" disabledKeys={disabledStores} defaultSelectedKeys={defaultKeys}>
+        <Select label="Tienda" name="location" disabledKeys={disabledStores} defaultSelectedKeys={defaultKeys}>
             {
                 stores.map((store: Location) =>
                 (
