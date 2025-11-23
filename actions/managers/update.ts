@@ -1,18 +1,25 @@
-"user server";
+"use server";
 
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHeaders";
 import { revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
 
-export async function updateManager({ formData, managerId }: { formData: FormData, managerId: string }) {
+export async function updateManager(managerId: string, formData: FormData) {
     const header = await authHeaders();
-    if (!header) return;
+    if (!header) {
+        console.warn("No auth header, abort delete");
+        return;
+    }
     let manager: any = {};
     for (const key of formData.keys()) {
-        const value = formData.get(key);
         manager[key] = formData.get(key);
     }
-    const response = await fetch(`${API_URL}/managers/${managerId}`, {
+    manager['managerSalary'] = +manager['managerSalary'];
+    if (manager['managerLocation'] == undefined || !manager['managerLocation']) delete manager?.location;
+    else if (manager['managerLocation'] || manager['managerLocation'] !== undefined) manager['managerLocation'] = +manager['managerLocation'];
+
+    const response = await fetch(`${API_URL}/manager/${managerId}`, {
         method: "PATCH",
         body: JSON.stringify(manager),
         headers: {
@@ -21,8 +28,9 @@ export async function updateManager({ formData, managerId }: { formData: FormDat
         }
     });
 
-    if ((await response).status == 200) {
+    if ((await response).status === 200) {
         revalidateTag("dashboard:managers", "max");
-        revalidateTag(`dashboard:managers${managerId}`, "max");
+        revalidateTag(`dashboard:managers:${managerId}`, "max");
+        redirect(`/dashboard/managers/${managerId}`);
     }
 }

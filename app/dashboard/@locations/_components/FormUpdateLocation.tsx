@@ -35,10 +35,10 @@ export default async function FormUpdateLocation({ store }: { store: string | st
     return (
         <form action={updateWithStoreId} className="bg-orange-400 py-2 px-2 flex flex-col gap-6 w-full rounded-lg">
             <h1 className="text-3xl text-white text-center font-extrabold">Editar Tienda</h1>
-            <Input required={true} defaultValue={foundLocation?.locationName} label="Nombre" placeholder="Oxxo ..." name="locationName" />
-            <Input required={true} defaultValue={foundLocation?.locationAddress} label="Direción" placeholder="Av 5 de Feb." name="locationAddress" />
-            <Input required={true} defaultValue={foundLocation?.locationLatLng[0].toString()} label="Latitud" placeholder="-25.8252" name="locationLat" />
-            <Input required={true} defaultValue={foundLocation?.locationLatLng[1].toString()} label="Longitud" placeholder="45.9874" name="locationLng" />
+            <Input isRequired defaultValue={foundLocation?.locationName} label="Nombre" placeholder="Oxxo ..." name="locationName" />
+            <Input isRequired defaultValue={foundLocation?.locationAddress} label="Direción" placeholder="Av 5 de Feb." name="locationAddress" />
+            <Input isRequired defaultValue={foundLocation?.locationLatLng[0].toString()} label="Latitud" placeholder="-25.8252" name="locationLat" />
+            <Input isRequired defaultValue={foundLocation?.locationLatLng[1].toString()} label="Longitud" placeholder="45.9874" name="locationLng" />
             <SelectManager defaultManager={foundManager?.managerId} managers={dataManagers} locations={dataLocations} />
             <Button type="submit" color="primary" className="text-lg font-bold">Actualizar</Button>
         </form>

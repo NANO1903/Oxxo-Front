@@ -1,8 +1,10 @@
 import { GoogleMapsAPI } from "@/api_keys";
 import { Manager } from "@/entitites";
-import { Card, CardBody, CardFooter, CardHeader, Divider } from "@heroui/react";
+import { Card, CardBody, CardFooter, CardHeader, Divider, Form } from "@heroui/react";
 import Link from "next/link";
 import DeleteManagerButton from "./DeleteManagerButton";
+import FormUpdateManager from "./FormUpdateManager";
+import UdpdateManager from "./UpdateManager";
 
 export default function ManagerCard({ manager }: { manager: Manager }) {
     return (
@@ -15,6 +17,7 @@ export default function ManagerCard({ manager }: { manager: Manager }) {
                 <div className="flex flex-col">
                     <p className="w-full">Email: <b>{manager.managerEmail}</b></p>
                     <p className="w-full">Teléfono: <b>{manager.managerPhoneNumber}</b></p>
+                    <p className="w-full">Salario: <b>{manager.managerSalary}</b></p>
                     <Link href={{ pathname: `/dashboard`, query: { store: manager.location?.locationId } }}><p className={manager.location ? "w-full" : "hidden"}>Tienda: <b className="underline">{manager?.location?.locationName}</b></p></Link>
                 </div>
                 <div>
@@ -33,6 +36,9 @@ export default function ManagerCard({ manager }: { manager: Manager }) {
             <CardFooter className="flex flex-col items-center">
                 <div className="mt-5 flex flex-row grow-0 gap-10 items-center">
                     <DeleteManagerButton managerId={manager.managerId} />
+                    <UdpdateManager>
+                        <FormUpdateManager manager={manager} />
+                    </UdpdateManager>
                 </div>
             </CardFooter>
         </Card>
