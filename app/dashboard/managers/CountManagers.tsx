@@ -22,6 +22,7 @@ const CountManagers = async () => {
         if (manager.managerSalary > max) max = manager.managerSalary;
         salary += manager.managerSalary;
     });
+    const avgSalary = salary / managers.length;
 
     return (
         <Card className="w-fit px-2 py-2">
@@ -29,7 +30,7 @@ const CountManagers = async () => {
                 <h1>Hay {managers.length} manager{managers.length > 1 ? "s" : ""}</h1>
                 <h1>Hay {countNoStore} sin tienda</h1>
                 <h1>El salario máximo es: {max} </h1>
-                <h1>El salario promedio es: {salary/managers.length} </h1>
+                <h1>El salario promedio es: {avgSalary % 1 == 0 ? avgSalary : avgSalary.toFixed(2)} </h1>
             </CardBody>
         </Card>
     );
