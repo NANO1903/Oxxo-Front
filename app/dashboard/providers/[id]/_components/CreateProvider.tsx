@@ -4,7 +4,7 @@ import { Modal, ModalContent, ModalBody, Button, useDisclosure } from "@heroui/r
 import { ReactNode } from "react";
 import { LuPlus } from "react-icons/lu";
 
-export default function AddProvider({ children }: { children: ReactNode }) {
+export default function CreateProvider({ children }: { children: ReactNode }) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (

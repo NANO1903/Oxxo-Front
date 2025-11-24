@@ -3,7 +3,7 @@ import { Provider } from "@/entitites";
 import { authHeaders } from "@/helpers/authHeaders";
 import ProviderCard from "./_components/ProviderCard";
 import Link from "next/link";
-import AddProvider from "./[id]/_components/AddProvider";
+import CreateProvider from "./[id]/_components/CreateProvider";
 import FormNewProvider from "./[id]/_components/FormNewProvider";
 
 const ProviderPage = async () => {
@@ -24,9 +24,9 @@ const ProviderPage = async () => {
     return (
         <div className="w-11/12">
             <div className="w-full h-[90vh] flex grow-0 flex-col px-10 pt-10 items-end">
-                <AddProvider>
+                <CreateProvider>
                     <FormNewProvider />
-                </AddProvider>
+                </CreateProvider>
                 <div className="w-full flex flex-wrap pt-20 grow-0 gap-15">
                     {providers.map((provider: Provider) => (
                         <Link className="hover:scale-110 transition-transform" href={{ pathname: `/dashboard/providers/${provider.providerId}` }} key={provider.providerId}>
