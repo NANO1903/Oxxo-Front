@@ -3,8 +3,8 @@ import { Provider } from "@/entitites";
 import { authHeaders } from "@/helpers/authHeaders";
 import ProviderCard from "./_components/ProviderCard";
 import Link from "next/link";
-import CreateProvider from "./[id]/_components/CreateProvider";
-import FormNewProvider from "./[id]/_components/FormNewProvider";
+import CreateProvider from "./_components/CreateProvider";
+import FormNewProvider from "./_components/FormNewProvider";
 
 const ProviderPage = async () => {
     const header = await authHeaders();

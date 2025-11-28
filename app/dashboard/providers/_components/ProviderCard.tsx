@@ -5,7 +5,7 @@ export default async function ProviderCard({ provider }: { provider: Provider })
     const productQuantity = provider.products ? provider.products.length : 0;
 
     return (
-        <Card>
+        <Card className="max-w-70 min-w-70 hover:bg-amber-50 hover:border-2 hover:border-orange-300 hover:scale-110">
             <CardHeader>
                 <b>{provider.providerName}</b>
             </CardHeader>
