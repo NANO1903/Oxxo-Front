@@ -1,6 +1,7 @@
 import { Product } from "@/entitites";
-import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
+import { Card, CardBody, CardFooter, CardHeader, Divider } from "@heroui/react";
 import Link from "next/link";
+import DeleteProductButton from "./DeleteProductButton";
 
 export default function ProductCard({ product }: { product: Product }) {
     return (
@@ -14,6 +15,9 @@ export default function ProductCard({ product }: { product: Product }) {
                 <p className="w-full"> Precio: <b>{product.price}</b></p>
                 <p className="w-full"> Cantidad de Sellos: <b>{product.countSeal}</b></p>
             </CardBody>
+            <CardFooter className="flex flex-row justify-center">
+                <DeleteProductButton productId={product.productId} />
+            </CardFooter>
         </Card>
     );
 }
