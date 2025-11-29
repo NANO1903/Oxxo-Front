@@ -9,6 +9,7 @@ export default function ProductCard({ product }: { product: Product }) {
             </CardHeader>
             <Divider />
             <CardBody>
+                <p className="w-full"> Proveedor: <b>{product.provider.providerName}</b></p>
                 <p className="w-full"> Precio: <b>{product.price}</b></p>
             </CardBody>
         </Card>
