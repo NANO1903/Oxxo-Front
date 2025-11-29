@@ -30,7 +30,7 @@ const ProviderPage = async () => {
                 <div className="w-full flex flex-wrap pt-20 grow-0 gap-15">
                     {providers.map((provider: Provider) => (
                         <Link className="hover:scale-110 transition-transform" href={{ pathname: `/dashboard/providers/${provider.providerId}` }} key={provider.providerId}>
-                            <ProviderCard provider={provider} key={provider.providerId} />
+                            <ProviderCard provider={provider} key={provider.providerId} pathName="/dashboard/providers" />
                         </Link>
                     ))}
                 </div>

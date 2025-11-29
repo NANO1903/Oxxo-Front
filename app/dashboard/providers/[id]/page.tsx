@@ -4,7 +4,7 @@ import ProviderCard from "../_components/ProviderCard";
 import { Product, Provider } from "@/entitites";
 import ProductCard from "./_components/ProductCard";
 import Link from "next/link";
-import { Divider } from "@heroui/react";
+import FormUpdateProvider from "./_components/FormUpdateProvider";
 
 export default async function ProviderPage({ params }: { params: { id: string } }) {
     const header = await authHeaders();
@@ -19,14 +19,15 @@ export default async function ProviderPage({ params }: { params: { id: string } 
             ...header
         },
         next: {
-            tags: ["dashboard:providers"]
+            tags: [`dashboard:providers:${providerId}`]
         }
     })).json();
 
     return (
         <div className="w-full flex flex-row h-[90vh] pt-10 items-center">
-            <div className="w-5/12 flex flex-col items-center">
-                <ProviderCard provider={provider} />
+            <div className="w-5/12 flex flex-col items-center gap-10">
+                <ProviderCard provider={provider} pathName={`/dashboard/providers/${providerId}`} />
+                <FormUpdateProvider provider={provider} />
             </div>
             <div className="h-[75vh] w-1 bg-orange-300 mr-10" />
             <div className="w-6/12 flex flex-wrap gap-10 content-start">
