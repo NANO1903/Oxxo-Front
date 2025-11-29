@@ -6,7 +6,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
     return (
         <>
             <div className="h-full w-4/12 bg-orange-50">
-                <div className="h-[90vh] overflow-hidden overflow-y-auto">
+                <div className="h-[90vh] overflow-hidden overflow-y-auto border-r-orange-400 border-r-2">
                     {
                         params.store ? (
                             <>

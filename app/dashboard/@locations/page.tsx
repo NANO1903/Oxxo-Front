@@ -36,7 +36,7 @@ const LocationsPage = async ({ searchParams }: { searchParams: Promise<{ store?:
     const params = await searchParams;
     return (
         <div className="w-7/12">
-            <div className="w-full flex flex-col items-center h-[90vh] bg-red-100">
+            <div className="w-full flex flex-col items-center h-[90vh] bg-orange-200">
                 <div className="w-1/2 my-10">
                     <SelectLocation locations={data} store={params.store} />
                 </div>

@@ -14,9 +14,7 @@ export default function SelectLocation({ locations, store }: Props) {
     const selected = store ? new Set([String(store)]) : new Set(["0"]);
 
     return (
-        <Select placeholder="Selecciona una tienda" label="Tienda" classNames={{
-            mainWrapper: "hover:ring-2 ring-red-300 rounded-xl transition-all",
-        }}
+        <Select variant="underlined" color="secondary" placeholder="Selecciona una tienda" label="Tienda"
             selectionMode="single"
             selectedKeys={selected}
             onSelectionChange={(keys) => {
