@@ -29,7 +29,7 @@ const ProductsLayout = async ({ children }: { children: ReactNode }) => {
     })).json();
 
     return (
-        <div className="w-full h-[90vh] flex flex-row">
+        <div className="w-11/12 h-[90vh] flex flex-row">
             <div className="w-3/12 h-[90vh]">
                 <FilteredCards products={products} providers={providers} />
             </div>
