@@ -24,7 +24,7 @@ export default function FilteredCards({ products, providers }: { products: Produ
 
         setProductsList(filteredProducts);
         setShow(true);
-    }, [filtered, provider]);
+    }, [filtered, provider, products]);
 
     if (!show) return "";
     return (
