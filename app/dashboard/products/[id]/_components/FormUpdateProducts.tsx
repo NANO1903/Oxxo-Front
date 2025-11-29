@@ -14,7 +14,7 @@ export default async function FormUpdateProduct({ product, providers }: { produc
             <h1 className="text-3xl text-white text-center font-extrabold">Editar Producto</h1>
             <Input isRequired defaultValue={product.productName} label="Nombre del Producto" name="productName" />
             <Input isRequired defaultValue={product.price.toString()} label="Precio" name="price" />
-            <Input isRequired defaultValue={product.countSeal.toString()} label="Cantidad de Sellos" name="sealCount" />
+            <Input isRequired defaultValue={product.countSeal.toString()} label="Cantidad de Sellos" name="countSeal" />
             <SelectProvider providers={providers} defaultProvider={providerId} />
             <Button type="submit" color="primary" className="text-lg font-bold">Actualizar</Button>
         </form>
