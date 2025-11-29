@@ -17,7 +17,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
             ...header
         },
         next: {
-            tags: [`dashboard:products`]
+            tags: [`dashboard:products:${productId}`]
         }
     })).json();
 
@@ -36,7 +36,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
             <div className="w-3/12">
                 <ProductCard product={product} />
             </div>
-            <div className="w-3/12">
+            <div className="w-4/12">
                 <FormUpdateProduct product={product} providers={providers} />
             </div>
         </div>

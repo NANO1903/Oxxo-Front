@@ -12,6 +12,7 @@ export default function ProductCard({ product }: { product: Product }) {
             <CardBody>
                 <p className="w-full"> Proveedor: <Link href={`/dashboard/providers/${product.provider.providerId}`} className="font-bold underline">{product.provider.providerName}</Link></p>
                 <p className="w-full"> Precio: <b>{product.price}</b></p>
+                <p className="w-full"> Cantidad de Sellos: <b>{product.countSeal}</b></p>
             </CardBody>
         </Card>
     );
