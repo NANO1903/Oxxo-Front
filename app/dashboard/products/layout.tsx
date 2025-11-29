@@ -33,7 +33,7 @@ const ProductsLayout = async ({ children }: { children: ReactNode }) => {
             <div className="w-3/12 h-[90vh]">
                 <FilteredCards products={products} providers={providers} />
             </div>
-            <div className="w-9/12 h-[90vh]">
+            <div className="w-9/12 h-[90vh] bg-orange-200">
                 {children}
             </div>
         </div>

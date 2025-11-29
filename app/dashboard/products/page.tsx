@@ -20,7 +20,7 @@ const ProductsPage = async () => {
     })).json();
 
     return (
-        <div className="w-full bg-orange-200 flex flex-row justify-center">
+        <div className="w-full flex flex-row justify-center">
             <div className="h-[90vh] w-full max-w-[400px] flex flex-col justify-center">
                 <form action={createProduct} className="bg-orange-400 py-2 px-2 flex flex-col gap-6 w-full rounded-lg">
                     <h1 className="text-3xl text-white text-center font-extrabold">Agregar Producto</h1>
@@ -31,7 +31,7 @@ const ProductsPage = async () => {
                         </div>
                     } type="number" />
                     <Input isRequired label="Cantidad de Sellos" name="countSeal" />
-                    <SelectProvider providers={providers} />
+                    <SelectProvider providers={providers} defaultProvider=""/>
                     <Button type="submit" color="primary" className="text-lg font-bold">Crear</Button>
                 </form>
             </div>

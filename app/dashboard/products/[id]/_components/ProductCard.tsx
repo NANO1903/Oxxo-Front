@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function ProductCard({ product }: { product: Product }) {
     return (
-        <Card className="w-full border-amber-100 text-zinc-600 hover:scale-110 hover:text-black hover:bg-amber-50 hover:border-orange-300 border-2">
+        <Card className="w-full text-black bg-amber-50 border-orange-300 border-2">
             <CardHeader>
                 <p className="w-full"> <b>{product.productName}</b></p>
             </CardHeader>
