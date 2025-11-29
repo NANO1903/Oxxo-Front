@@ -11,13 +11,15 @@ export default function FilteredCards({ products, providers }: { products: Produ
     const [provider, setProvider] = useState<string>();
     const [show, setShow] = useState(false);
     const [productsList, setProductsList] = useState<Product[]>(products);
+
     useEffect(() => {
         const filteredProducts = products.filter((product) => {
-            if (product.productName.toLowerCase().includes(filtered.toLowerCase()) &&
-                product.provider.providerId === provider)
-                return true;
-            else
-                return false;
+            let nameMatches = product.productName.toLowerCase().includes(filtered.toLowerCase());
+            let providerMatches = product ? product.provider?.providerId === provider : null;
+
+            if (filtered && !provider) return nameMatches;
+            else if (filtered && provider) return nameMatches && providerMatches;
+            else if (!filtered && provider) return providerMatches;
         })
 
         setProductsList(filteredProducts);
@@ -28,14 +30,18 @@ export default function FilteredCards({ products, providers }: { products: Produ
     return (
         <div className="h-full flex flex-col border-r-orange-400 border-r-2">
             <div className="w-full pt-10 pb-2 px-10">
-                <Select variant="underlined" color="secondary" className="pb-5" label="Proveedor" selectionMode="single" onChange={(e) => { setProvider(e.target.value) }}>
+                <Select variant="underlined" color="secondary" className="pb-5" label="Proveedor" selectionMode="single" onChange={(e) => {
+                    setProvider(e.target.value); console.log(e.target.value);
+                }}>
                     {providers.map((provider) =>
                         <SelectItem key={provider.providerId}>
                             {provider.providerName}
                         </SelectItem>
                     )}
                 </Select>
-                <Input onChange={(e) => setFiltered(e.target.value)} label="Nombre del producto" variant="underlined" color="secondary" />
+                <Input onChange={(e) => {
+                    setFiltered(e.target.value);
+                }} label="Nombre del producto" variant="underlined" color="secondary" />
             </div>
             <div className="w-full overflow-y-auto flex flex-col pt-10 px-12 gap-8 last:pb-8">
                 {show && productsList.map((product) => {
