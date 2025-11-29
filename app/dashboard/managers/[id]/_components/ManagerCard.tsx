@@ -8,7 +8,7 @@ import UdpdateManager from "./UpdateManager";
 
 export default function ManagerCard({ manager }: { manager: Manager }) {
     return (
-        <Card className="mx-20 py-2 text-center bg-amber-50 border-2 border-orange-300">
+        <Card className="mx-20 py-2 text-center bg-amber-50 border-2 border-orange-300 mb-10">
             <CardHeader>
                 <p className="w-full text-3xl"><b>{manager.managerFullName}</b></p>
             </CardHeader>
