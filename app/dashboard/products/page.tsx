@@ -1,8 +1,6 @@
 import { API_URL } from "@/constants";
 import { Product } from "@/entitites";
 import { authHeaders } from "@/helpers/authHeaders";
-import ProductCard from "./_components/ProductCard";
-import Link from "next/link";
 import FilteredCards from "./_components/FilteredCards";
 
 const ProductsPage = async () => {
@@ -20,8 +18,10 @@ const ProductsPage = async () => {
     })).json();
 
     return (
-        <div>
-            <FilteredCards products={products} />
+        <div className="w-full h-[90vh]">
+            <div className="w-3/12 h-[90vh]">
+                <FilteredCards products={products} />
+            </div>
         </div>
     );
 };

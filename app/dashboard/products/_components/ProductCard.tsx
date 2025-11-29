@@ -3,7 +3,7 @@ import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
 
 export default function ProductCard({ product }: { product: Product }) {
     return (
-        <Card className="max-w-50 min-w-50 border-amber-100 text-zinc-600 hover:scale-110 hover:text-black hover:bg-amber-50 hover:border-orange-300 border-2">
+        <Card className="w-full border-amber-100 text-zinc-600 hover:scale-110 hover:text-black hover:bg-amber-50 hover:border-orange-300 border-2">
             <CardHeader>
                 <p className="w-full"> <b>{product.productName}</b></p>
             </CardHeader>
