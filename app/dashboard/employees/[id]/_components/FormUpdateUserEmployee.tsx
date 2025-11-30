@@ -5,7 +5,7 @@ import { useState } from "react";
 import { generate } from "generate-password";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@/app/_icons/icons";
 import { Employee } from "@/entitites";
-import UpdateEmployee from "@/actions/users/update";
+import UpdateEmployee from "@/actions/users/updateEmployee";
 
 export default function FormUpdateUserEmployee({ employee }: { employee: Employee }) {
     if (!employee) return null;
