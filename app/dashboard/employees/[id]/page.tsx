@@ -4,6 +4,8 @@ import { API_URL } from "@/constants";
 import { Employee, Location } from "@/entitites";
 import { Image } from "@heroui/react";
 import FormUpdateEmployee from "./_components/FormUpdateEmployee";
+import DeleteEmployee from "./_components/DeleteEmployee";
+import DeleteEmployeeButton from "../../products/[id]/_components/DeleteButton";
 
 export default async function EmployeePage({ params }: { params: { id: string } }) {
     const { id: employeeId } = (await params) as { id: string };
@@ -34,7 +36,13 @@ export default async function EmployeePage({ params }: { params: { id: string } 
 
     return (
         <div className="w-full flex flex-wrap grow-0 gap-10 justify-center items-center">
-            <EmployeeCard employee={employee} />
+            <div className="flex flex-col gap-2 items-center">
+                <EmployeeCard employee={employee} />
+                <DeleteEmployee>
+                    <h1 className="text-2xl text-center font-medium">¿Estás seguro de eliminar al empleado <b className="text-neutral-500">{employee.employeeName + " " + employee.employeeLastName}</b>?</h1>
+                    <DeleteEmployeeButton employeeId={employeeId} />
+                </DeleteEmployee>
+            </div>
             {employee.employeePhoto ?
                 <div className="border-5 border-black rounded-xl h-fit">
                     <Image src={employee.employeePhoto} isZoomed className="object-cover max-h-60 p-1" classNames={{ img: "size-full", }} />
@@ -42,7 +50,7 @@ export default async function EmployeePage({ params }: { params: { id: string } 
                 : ""
             }
             <div className="w-4/12">
-                <FormUpdateEmployee employee={employee} locations={locations}/>
+                <FormUpdateEmployee employee={employee} locations={locations} />
             </div>
         </div>
     );
