@@ -1,8 +1,6 @@
 import { API_URL } from "@/constants";
 import { Employee, Location } from "@/entitites";
 import { authHeaders } from "@/helpers/authHeaders";
-import EmployeePhotoCard from "./_components/EmployeePhotoCard";
-import EmployeeCard from "./_components/EmployeeCard";
 import CreateEmployee from "./_components/CreateEmployee";
 import FormCreateEmployee from "./_components/FormCreateEmployee";
 import ListEmployees from "./_components/ListEmployees";

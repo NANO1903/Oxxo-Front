@@ -22,14 +22,14 @@ export async function updateEmployee(employeeId: string, formData: FormData) {
     }
 
     response = await fetch(`${API_URL}/employees/${employeeId}`, {
-        method: "POST",
+        method: "PATCH",
         body: fd,
         headers: {
             ...header
         }
     });
-    
-    if ((await response).status === 201) {
+
+    if ((await response).status === 200) {
         revalidateTag("dashboard:employees", "max");
         revalidateTag(`dashboard:employees:${employeeId}`, "max");
         redirect(`/dashboard/employees/${employeeId}`);
