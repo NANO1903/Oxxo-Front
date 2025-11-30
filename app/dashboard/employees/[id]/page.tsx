@@ -6,7 +6,8 @@ import FormUpdateEmployee from "./_components/FormUpdateEmployee";
 import DeleteEmployee from "./_components/DeleteEmployee";
 import DeleteEmployeeButton from "../../products/[id]/_components/DeleteButton";
 import CreateUser from "./_components/CreateUser";
-import FormCreateUserEmployee from "./_components/FormCreateUser";
+import FormCreateUserEmployee from "./_components/FormCreateUserEmployee";
+import FormUpdateUserEmployee from "./_components/FormUpdateUserEmployee";
 
 export default async function EmployeePage({ params }: { params: { id: string } }) {
     const { id: employeeId } = (await params) as { id: string };
@@ -45,8 +46,13 @@ export default async function EmployeePage({ params }: { params: { id: string } 
                 </DeleteEmployee>
             </div>
             <div className="border-5 border-black rounded-xl h-fit">
-                <CreateUser employee={employee}>
-                    <FormCreateUserEmployee employeeId={employee.employeeId} />
+                <CreateUser photo={employee.employeePhoto}>
+                    {
+                        !employee.user ?
+                            <FormCreateUserEmployee employeeId={employee.employeeId} />
+                            :
+                            <FormUpdateUserEmployee employee={employee} />
+                    }
                 </CreateUser>
             </div>
             <div className="w-4/12">
