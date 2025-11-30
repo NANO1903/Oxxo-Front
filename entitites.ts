@@ -30,7 +30,7 @@ export interface Manager {
     managerEmail: string;
     managerPhoneNumber: string;
     location?: Location;
-    user?: any;
+    user?: User;
 }
 
 export interface Provider {

@@ -5,12 +5,27 @@ import Link from "next/link";
 import DeleteManagerButton from "./DeleteManagerButton";
 import FormUpdateManager from "./FormUpdateManager";
 import UdpdateManager from "./UpdateManager";
+import GenericModal from "@/app/dashboard/_components/GenericModal";
+import FormUpdateUserManager from "./FormUpdateUserManager";
+import { BsPersonPlusFill } from "react-icons/bs";
+import { FaUserEdit } from "react-icons/fa";
+import FormCreateManagerUser from "./FormCreateManagerUser";
 
 export default function ManagerCard({ manager }: { manager: Manager }) {
     return (
         <Card className="mx-20 py-2 text-center bg-amber-50 border-2 border-orange-300 mb-10">
             <CardHeader>
                 <p className="w-full text-3xl"><b>{manager.managerFullName}</b></p>
+                {
+                    !manager.user ?
+                        <GenericModal icon={<BsPersonPlusFill size="20" />}>
+                            <FormCreateManagerUser managerId={manager.managerId} />
+                        </GenericModal>
+                        :
+                        <GenericModal icon={<FaUserEdit size="20" />}>
+                            <FormUpdateUserManager manager={manager} />
+                        </GenericModal>
+                }
             </CardHeader>
             <Divider />
             <CardBody className="flex flex-row grow-0 gap-10 justify-center items-center text-lg">

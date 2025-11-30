@@ -1,20 +1,20 @@
 "use client";
 
-import RegisterEmployee from "@/actions/users/register-employee";
 import { Button, Input } from "@heroui/react";
 import { useState } from "react";
 import { generate } from "generate-password";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@/app/_icons/icons";
-import { Manager } from "@/entitites";
+import RegisterManger from "@/actions/users/register-manager";
 
-export default function FormCreateManagerUser() {
+export default function FormCreateManagerUser({ managerId }: { managerId: string }) {
+    const registerManagerById = RegisterManger.bind(null, managerId)
     const [password, setPassword] = useState<string>();
     const [isVisible, setIsVisible] = useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
 
 
     return (
-        <form action={""} className="bg-orange-400 py-2 px-2 flex flex-col gap-6 w-full rounded-lg">
+        <form action={registerManagerById} className="bg-orange-400 py-2 px-2 flex flex-col gap-6 w-full rounded-lg">
             <h1 className="text-3xl text-white text-center font-extrabold">Crear Usuario</h1>
             <Input isRequired label="Correo del Usuario" name="userEmail" type="email" />
             <Input isRequired value={password} label="Contraseña del Usuario" name="userPassword" type={isVisible ? "text" : "password"} endContent={
