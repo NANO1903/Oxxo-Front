@@ -9,7 +9,7 @@ export default function CreateEmployee({ children }: { children: ReactNode }) {
 
     return (
         <>
-            <Button className="w-fit" color="primary" onPress={onOpen}><LuPlus size="20" /></Button>
+            <Button className="w-fit max-h-[55px] min-h-[55px]" color="primary" onPress={onOpen}><LuPlus size="20" /></Button>
             <Modal className="bg-orange-400" isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
                     {() => (
