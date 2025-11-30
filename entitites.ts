@@ -14,9 +14,9 @@ export interface Employee {
     employeeLastName: string;
     employeePhoneNumber: string;
     employeeEmail: string;
-    employeePhoto?: string;
+    employeePhoto: string;
     location?: Location;
-    user?: any;
+    user?: User;
 }
 
 export interface Region {
@@ -47,4 +47,13 @@ export interface Product {
     price: number;
     countSeal: number;
     provider: Provider;
+}
+
+export interface User {
+    userId: string;
+    userEmail: string;
+    userPassword: string;
+    userRoles: string[];
+    manager: Manager;
+    employee: Employee;
 }

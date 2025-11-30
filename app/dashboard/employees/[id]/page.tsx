@@ -2,10 +2,11 @@ import { authHeaders } from "@/helpers/authHeaders";
 import EmployeeCard from "./_components/EmployeeCard";
 import { API_URL } from "@/constants";
 import { Employee, Location } from "@/entitites";
-import { Image } from "@heroui/react";
 import FormUpdateEmployee from "./_components/FormUpdateEmployee";
 import DeleteEmployee from "./_components/DeleteEmployee";
 import DeleteEmployeeButton from "../../products/[id]/_components/DeleteButton";
+import CreateUser from "./_components/CreateUser";
+import FormCreateUserEmployee from "./_components/FormCreateUser";
 
 export default async function EmployeePage({ params }: { params: { id: string } }) {
     const { id: employeeId } = (await params) as { id: string };
@@ -43,12 +44,11 @@ export default async function EmployeePage({ params }: { params: { id: string } 
                     <DeleteEmployeeButton employeeId={employeeId} />
                 </DeleteEmployee>
             </div>
-            {employee.employeePhoto ?
-                <div className="border-5 border-black rounded-xl h-fit">
-                    <Image src={employee.employeePhoto} isZoomed className="object-cover max-h-60 p-1" classNames={{ img: "size-full", }} />
-                </div>
-                : ""
-            }
+            <div className="border-5 border-black rounded-xl h-fit">
+                <CreateUser employee={employee}>
+                    <FormCreateUserEmployee employeeId={employee.employeeId} />
+                </CreateUser>
+            </div>
             <div className="w-4/12">
                 <FormUpdateEmployee employee={employee} locations={locations} />
             </div>
